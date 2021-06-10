@@ -9,8 +9,8 @@ def fight(character1, character2):
     battle_choice = int(input(battle_message))
     if battle_choice == 1:
       if character1.is_alive() and character2.is_alive():
-        character2.attack(character1)
         character1.attack(character2)
+        character2.attack(character1)
       if not character2.is_alive() and not character1.is_alive():
           print("Congrats, you both died.")
           break
