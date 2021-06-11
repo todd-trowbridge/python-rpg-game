@@ -1,44 +1,52 @@
 from Hero import Hero
 from Goblin import Goblin
 from Zombie import Zombie
+from Character import Character
+from random import randrange
 
 def fight(character1, character2):
+  # stop the loop if the hero dies
   while hero.health > 0:
+    # print character's health
     character1.print_status()
     character2.print_status()
+    # battle_message defined below
     battle_choice = int(input(battle_message))
     if battle_choice == 1:
       if character1.is_alive() and character2.is_alive():
+        character1.set_power()
         character1.attack(character2)
+        character2.set_power()
         character2.attack(character1)
       if not character2.is_alive() and not character1.is_alive():
-          print("Congrats, you both died.")
+          print("Congrats, you both died.".upper())
           break
       elif not character2.is_alive():
-        print('You killed them!')
+        if isinstance(character2, Goblin):
+          print("Congratulations, you've murdered a goblin".upper())
         break
       elif not character1.is_alive():
-        print("You've been struck by (and killed by) a smooth criminal")
+        print("You've been struck by, you've been killed by a smooth criminal".upper())
         break
     elif battle_choice == "2":
       pass
     elif battle_choice == "3":
-      print("You ran away")
+      print("You ran away".upper())
       break
 
 battle_message = f"""
 (1) Attack
-(3) Stare at the sky
-(4) Run away
-"""
+(2) Stare at the sky
+(3) Run away
+: """.upper()
 
 welcome_message = """
-Welcome to fight club.
+-----Welcome to Fight Club-----
 
-(1) Fight a nearby goblin
-(2) Fight a nearby zombie
-(3) Talk about fight club.
-"""
+  (1) Fight a nearby goblin
+  (2) Fight a nearby zombie
+  (3) Talk about fight club
+: """.upper()
 
 while True:
   goblin = Goblin()
