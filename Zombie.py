@@ -3,7 +3,7 @@ from random import randrange
 
 class Zombie(Character):
   def __init__(self):
-    self.health = 'undead'
+    self.health = -1
     self.max_power = 10
     self.power = 10
 
@@ -11,4 +11,4 @@ class Zombie(Character):
     return True
 
   def print_status(self):
-    print(f'The zombie has {self.health} health and {self.power} power.'.upper())
+    print(f'The zombie is undead and has {self.power} power.'.upper())
